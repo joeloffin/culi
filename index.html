@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culi - Find the best food experiences on Earth.</title>
-    <link rel="icon" type="image/x-icon" href="Untitled design (2).png">
+    <link rel="icon" type="image/png" href="/culi-site-images/culi%20-%20co%20(3).png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --gold: #FFD700;
@@ -23,17 +23,11 @@
             --transparent-white: rgba(255, 255, 255, 0.1);
             --transparent-gold: rgba(255, 215, 0, 0.1);
             --transparent-emerald: rgba(4, 106, 56, 0.1);
-            
-            /* Font variables */
             --serif-font: 'Playfair Display', serif;
             --sans-font: 'Inter', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--sans-font);
@@ -43,14 +37,11 @@
             overflow-x: hidden;
         }
 
-        /* Static texture overlay */
         .static-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image:
                 radial-gradient(circle at 20% 80%, rgba(4, 106, 56, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
@@ -58,11 +49,9 @@
             z-index: 1;
         }
 
-        /* Header */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100%;
             padding: 2rem 4rem;
             display: flex;
@@ -81,24 +70,13 @@
         }
 
         .logo {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            width: 100px; height: 100px;
+            display: flex; align-items: center; justify-content: center;
         }
 
         .logo-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            width: 100%; height: 100%; object-fit: contain;
             transition: all 0.3s ease;
-        }
-
-        .logo:hover .logo-image {
-            transform: scale(1.05);
         }
 
         nav a {
@@ -107,56 +85,28 @@
             font-weight: 500;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            position: relative;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
             margin-left: 3rem;
+            transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--gold-dark);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
+        nav a:hover { color: var(--gold-dark); }
 
         nav a.active {
             color: var(--white);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; justify-content: center; align-items: center;
             background: var(--dark-gray);
-            overflow: hidden;
+            position: relative; overflow: hidden;
         }
 
         .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: cover;
             opacity: 0.7;
-            z-index: 1;
         }
 
         .hero-content {
@@ -164,1817 +114,436 @@
             z-index: 2;
             text-align: center;
             max-width: 900px;
-            padding: 0 2rem;
         }
 
         .hero h1 {
             font-family: var(--serif-font);
             font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 700;
             margin-bottom: 2rem;
-            line-height: 1.1;
-            color: var(--white);
             text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
         }
 
-        .hero p {
-            font-family: var(--serif-font);
-            font-size: 1.2rem;
-            font-weight: 400;
-            font-style: italic;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--white);
-            opacity: 0.8;
-        }
-
-        /* CTA Button */
         .cta-button {
             display: inline-block;
             padding: 1.2rem 3rem;
             background: var(--gold);
             color: var(--black);
-            text-decoration: none;
+            border-radius: 16px;
             font-family: var(--serif-font);
             font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            border-radius: 16px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
             background: var(--gold-dark);
-        }
-
-        /* Membership Details */
-        .membership-details {
-            padding: 6rem 4rem;
-            background: var(--dark-gray);
-            border: 1px solid rgba(4, 106, 56, 0.3);
-            margin: 2rem 4rem;
-            border-radius: 20px;
-            position: relative;
-            box-shadow: 0 10px 40px rgba(4, 106, 56, 0.2);
-        }
-
-        .membership-details::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
-            border-radius: 20px;
-            animation: shimmer-border 4s infinite;
-        }
-
-        @keyframes shimmer-border {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-
-        .membership-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
-
-        .membership-text {
-            font-family: var(--serif-font);
-            font-size: 1.3rem;
-            font-weight: 400;
-            font-style: italic;
-            color: var(--white);
-            line-height: 1.6;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.8;
-        }
-
-        .submission-card {
-            background: var(--black);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(4, 106, 56, 0.3);
-            border: 1px solid rgba(4, 106, 56, 0.3);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .submission-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 80px rgba(4, 106, 56, 0.2);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
-            padding: 2.5rem 2rem;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .card-title {
-            font-family: var(--serif-font);
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-subtitle {
-            font-family: var(--serif-font);
-            font-size: 1.1rem;
-            font-weight: 400;
-            font-style: italic;
-            opacity: 0.8;
-        }
-
-        .card-content {
-            padding: 2.5rem;
-        }
-
-        .contact-form {
-            margin-bottom: 0;
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-label {
-            display: block;
-            font-family: var(--serif-font);
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 0.8rem;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border: 2px solid rgba(4, 106, 56, 0.4);
-            border-radius: 12px;
-            font-size: 1rem;
-            font-family: var(--sans-font);
-            background: var(--dark-gray);
-            color: var(--white);
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
-            transform: translateY(-1px);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-            font-style: italic;
-        }
-
-        .submit-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            background: var(--gold);
-            color: var(--black);
-            text-decoration: none;
-            padding: 1.2rem 2.5rem;
-            border-radius: 16px;
-            font-family: var(--serif-font);
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            text-align: center;
-        }
-
-        .submit-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .submit-button:hover::before {
-            left: 100%;
-        }
-
-        .submit-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-            background: var(--gold-dark);
-        }
-
-        .button-arrow {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .submit-button:hover .button-arrow {
-            transform: translateX(5px);
-        }
-
-        /* Carousel Section */
-        .carousel-section {
-            padding: 8rem 4rem;
-            text-align: center;
-            background: var(--black);
-        }
-
-        .carousel-title {
-            font-family: var(--serif-font);
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 4rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .carousel-container {
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .carousel {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.5s ease;
-            padding: 2rem 0;
-        }
-
-        .carousel-item {
-            flex: 0 0 350px;
-            height: 450px;
-            background: var(--dark-gray);
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(4, 106, 56, 0.1);
-            box-shadow: 0 8px 30px rgba(4, 106, 56, 0.1);
-        }
-
-        .carousel-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(4, 106, 56, 0.2);
-        }
-
-        .carousel-image {
-            width: 100%;
-            height: 350px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .carousel-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(4, 106, 56, 0.7), rgba(4, 106, 56, 0.3));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-family: var(--serif-font);
-            font-size: 1.1rem;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .carousel-item:hover .carousel-overlay {
-            opacity: 1;
-        }
-
-        .carousel-item:hover .carousel-img {
-            transform: scale(1.05);
-        }
-
-        .carousel-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .carousel-item:hover .carousel-image::before {
-            opacity: 1;
-        }
-
-        .carousel-text {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 1.5rem;
-            font-family: var(--serif-font);
-            backdrop-filter: blur(10px);
-        }
-
-        .carousel-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .carousel-description {
-            font-size: 0.95rem;
-            color: var(--white);
-            font-weight: 400;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .carousel-btn {
-            background: rgba(4, 106, 56, 0.1);
-            color: var(--emerald-dark);
-            border: 1px solid rgba(4, 106, 56, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-family: var(--sans-font);
-            font-weight: 400;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            min-width: 80px;
-            justify-content: center;
-        }
-
-        .carousel-btn:hover {
-            background: rgba(4, 106, 56, 0.2);
-            border-color: rgba(4, 106, 56, 0.4);
-            transform: translateY(-1px);
-        }
-
-        .carousel-btn:disabled {
-            background: rgba(4, 106, 56, 0.05);
-            color: rgba(4, 106, 56, 0.3);
-            border-color: rgba(4, 106, 56, 0.1);
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 0.3rem;
-            margin-top: 1.5rem;
-        }
-
-        .indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(4, 106, 56, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: rgba(4, 106, 56, 0.6);
-            transform: scale(1.1);
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 8rem 4rem;
-            text-align: center;
-            background: var(--dark-gray);
-        }
-
-        .about-title {
-            font-family: var(--serif-font);
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 3rem;
-            text-transform: lowercase;
-            letter-spacing: 1px;
-            color: var(--emerald-dark);
-        }
-
-        .about-tagline {
-            font-family: var(--serif-font);
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 3rem;
-            animation: emerald-flash 3s infinite;
-        }
-
-        @keyframes emerald-flash {
-            0%, 100% { color: transparent; }
-            50% { color: var(--emerald); }
-        }
-
-        .about-description {
-            font-family: var(--serif-font);
-            font-size: 1.2rem;
-            font-weight: 400;
-            font-style: italic;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-            color: var(--white);
-            opacity: 0.8;
-        }
-
-        /* Member Benefits */
-        .benefits-section {
-            padding: 8rem 4rem;
-            background: var(--black);
-        }
-
-        .benefits-title {
-            font-family: var(--serif-font);
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 5rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .benefits-vertical {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 6rem;
-            gap: 4rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-            background: var(--dark-gray);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(4, 106, 56, 0.2);
-            border: 1px solid rgba(4, 106, 56, 0.3);
-        }
-
-        .benefit-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .benefit-item:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        .benefit-item:nth-child(4) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .benefit-image {
-            flex: 0 0 300px;
-            height: 300px;
-            background: linear-gradient(45deg, var(--dark-gray), rgba(255, 215, 0, 0.1));
-            border-radius: 16px;
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .benefit-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .benefit-image:hover::before {
-            opacity: 1;
-        }
-
-        .benefit-image:hover {
-            transform: scale(1.05);
-            border-color: rgba(255, 215, 0, 0.3);
-        }
-
-        .image-placeholder {
-            color: var(--gold);
-            font-family: var(--serif-font);
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 2rem;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .benefit-image:hover .image-placeholder {
-            opacity: 1;
-        }
-
-        .benefit-content {
-            flex: 1;
-        }
-
-        .benefit-title {
-            font-family: var(--serif-font);
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--emerald);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .benefit-description {
-            font-family: var(--serif-font);
-            font-size: 1.2rem;
-            font-weight: 400;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Alternate layout for even items */
-        .benefit-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        /* Value Summary */
-        .value-summary {
-            padding: 6rem 4rem;
-            background: var(--dark-gray);
-            text-align: center;
-        }
-
-        .value-title {
-            font-family: var(--serif-font);
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            color: var(--emerald);
-        }
-
-        .value-list {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .value-item {
-            display: flex;
-            align-items: flex-start;
-                margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(4, 106, 56, 0.1);
-            border-radius: 12px;
-            border-left: 3px solid var(--emerald);
-        }
-
-        .value-bullet {
-            width: 8px;
-            height: 8px;
-            background: var(--emerald);
-            border-radius: 50%;
-            margin-right: 1.5rem;
-            margin-top: 0.5rem;
-            flex-shrink: 0;
-        }
-
-        .value-content h4 {
-            font-family: var(--serif-font);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--emerald);
-        }
-
-        .value-content p {
-            font-family: var(--serif-font);
-            font-size: 1rem;
-            font-weight: 400;
-            font-style: italic;
-            opacity: 0.8;
-            line-height: 1.6;
-            color: var(--white);
-        }
-
-        /* Final CTA */
-        .final-cta {
-            padding: 8rem 4rem;
-            background: var(--black);
-            text-align: center;
-        }
-
-        .final-cta .cta-button {
-            margin-bottom: 2rem;
-        }
-
-        .final-tagline {
-            font-family: var(--serif-font);
-            font-size: 1.5rem;
-            font-weight: 400;
-            opacity: 0.8;
-            font-style: italic;
-            color: var(--white);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 1.5rem 2rem;
-            }
-
-            nav a {
-                margin-left: 1.5rem;
-                font-size: 0.8rem;
-            }
-
-            .hero-content {
-                padding: 0 1rem;
-            }
-
-            .hero h1 {
-                font-size: clamp(2rem, 6vw, 3rem);
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .membership-details,
-            .carousel-section,
-            .about-section,
-            .benefits-section,
-            .value-summary,
-            .final-cta {
-                padding: 4rem 2rem;
-            }
-
-            .membership-info {
-                flex-direction: column;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .membership-text {
-                font-size: 1.1rem;
-            }
-
-            .submission-card {
-                margin: 0;
-            }
-
-            .card-content {
-                padding: 2rem;
-            }
-
-            .form-input {
-                padding: 0.8rem 1rem;
-            }
-
-            .benefit-item {
-                flex-direction: column;
-                gap: 2rem;
-                text-align: center;
-                padding: 2rem;
-            }
-
-            .benefit-item:nth-child(even) {
-                flex-direction: column;
-            }
-
-            .benefit-image {
-                flex: 0 0 250px;
-                height: 250px;
-            }
-
-            .benefit-title {
-                font-size: 1.5rem;
-            }
-
-            .carousel {
-                gap: 1rem;
-            }
-
-            .carousel-item {
-                flex: 0 0 280px;
-                height: 350px;
-            }
-            
-            .carousel-image {
-                height: 250px;
-            }
-            
-            .carousel-title {
-                font-size: 1rem;
-                margin-bottom: 0.4rem;
-            }
-            
-            .carousel-description {
-                font-size: 0.85rem;
-            }
-            
-            .carousel-text {
-                padding: 1rem;
-            }
-            
-            .carousel-controls {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            
-            .carousel-btn {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.75rem;
-                min-width: 70px;
-            }
-
-            .carousel-title {
-                font-size: 2rem;
-            }
-
-            .about-tagline {
-                font-size: 2rem;
-            }
-
-            .about-description {
-                font-size: 1rem;
-            }
-
-            .benefits-title {
-                font-size: 2rem;
-            }
-
-            .value-title {
-                font-size: 2rem;
-            }
-
-            .final-tagline {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 1rem 1.5rem;
-            }
-
-            nav a {
-                margin-left: 1rem;
-                font-size: 0.75rem;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .membership-details,
-            .carousel-section,
-            .about-section,
-            .benefits-section,
-            .value-summary,
-            .final-cta {
-                padding: 3rem 1.5rem;
-            }
-
-            .cta-button {
-                padding: 1rem 2rem;
-                font-size: 0.9rem;
-            }
-
-            .carousel-item {
-                flex: 0 0 250px;
-                height: 320px;
-            }
-
-            .carousel-image {
-                height: 200px;
-            }
-
-            .benefit-item {
-                padding: 1.5rem;
-            }
-
-            .benefit-image {
-                flex: 0 0 200px;
-                height: 200px;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--black);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gold-dark);
-        }
-
-        /* Host Contact Section */
-        .host-contact-section {
-            padding: 6rem 4rem;
-            background: var(--dark-gray);
-            text-align: center;
-        }
-
-        .host-contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .host-contact-title {
-            font-family: var(--serif-font);
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--emerald);
-            margin-bottom: 2rem;
-        }
-
-        .host-contact-description {
-            font-family: var(--serif-font);
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--white);
-            opacity: 0.8;
-            margin-bottom: 3rem;
-        }
-
-        .email-contact-block {
-            background: var(--black);
-            border-radius: 20px;
-            padding: 3rem;
-            border: 1px solid rgba(4, 106, 56, 0.3);
-            box-shadow: 0 10px 40px rgba(4, 106, 56, 0.2);
-        }
-
-        .email-title {
-            font-family: var(--serif-font);
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-        }
-
-        .email-instructions {
-            font-family: var(--serif-font);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--white);
-            margin-bottom: 2rem;
-        }
-
-        .email-highlight {
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .email-note {
-            font-family: var(--serif-font);
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--white);
-            margin: 0;
-        }
-
-        .email-contact-info {
-            margin-top: 2rem;
-        }
-
-        .email-link {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--black);
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-family: var(--serif-font);
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .email-link:hover {
-            background: var(--emerald-light);
-            transform: translateY(-2px);
-        }
-
-        /* Responsive Design for Host Contact */
-        @media (max-width: 768px) {
-            .host-contact-section {
-                padding: 4rem 2rem;
-            }
-
-            .host-contact-title {
-                font-size: 2.5rem;
-            }
-
-            .email-contact-block {
-                padding: 2rem;
-            }
-
-            .email-title {
-                font-size: 1.5rem;
-            }
-
-            .email-instructions {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .host-contact-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .host-contact-title {
-                font-size: 2rem;
-            }
-
-            .email-contact-block {
-                padding: 1.5rem;
-            }
-
-            .email-link {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
-
-        /* Social Media Footer */
-        .social-footer {
-            padding: 3rem 4rem;
-            background: var(--black);
-            border-top: 1px solid rgba(4, 106, 56, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .social-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--dark-gray);
-            border: 2px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background: var(--gold);
-            color: var(--black);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
-        }
-
-        /* Social Media Icons Responsive */
-        @media (max-width: 768px) {
-            .social-footer {
-                padding: 2rem 2rem;
-            }
-
-            .social-icons {
-                gap: 1.5rem;
-            }
-
-            .social-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .social-footer {
-                padding: 1.5rem;
-            }
-
-            .social-icons {
-                gap: 1rem;
-            }
-
-            .social-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Legal Footer */
-        .legal-footer {
-            padding: 2rem 4rem;
-            background: var(--black);
-            border-top: 1px solid rgba(4, 106, 56, 0.2);
-        }
-
-        .legal-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .legal-link {
-            color: rgba(255, 255, 255, 0.6);
-            font-family: var(--sans-font);
-            font-size: 0.75rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid transparent;
-        }
-
-        .legal-link:hover {
-            color: var(--gold);
-            border-bottom-color: var(--gold);
-        }
-
-        .legal-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 1.5rem 0;
-            display: none;
-            border-top: 1px solid rgba(4, 106, 56, 0.1);
-            margin-top: 1rem;
-        }
-
-        .legal-content.active {
-            display: block;
-        }
-
-        .legal-content h4 {
-            font-family: var(--serif-font);
-            font-size: 1rem;
-            color: var(--emerald);
-            margin-bottom: 1rem;
-        }
-
-        .legal-content p {
-            font-family: var(--sans-font);
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .legal-content ul {
-            font-family: var(--sans-font);
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .legal-content a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        .legal-content a:hover {
-            text-decoration: underline;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(4, 106, 56, 0.1);
-            margin-top: 1rem;
-            color: rgba(255, 255, 255, 0.4);
-            font-family: var(--sans-font);
-            font-size: 0.7rem;
-        }
-
-        /* Legal Footer Responsive */
-        @media (max-width: 768px) {
-            .legal-footer {
-                padding: 1.5rem 2rem;
-            }
-
-            .legal-links {
-                gap: 1.5rem;
-            }
-
-            .legal-link {
-                font-size: 0.7rem;
-            }
-
-            .legal-content {
-                padding: 1rem 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .legal-footer {
-                padding: 1rem 1.5rem;
-            }
-
-            .legal-links {
-                gap: 1rem;
-                flex-direction: column;
-            }
-
-            .legal-content h4 {
-                font-size: 0.9rem;
-            }
-
-            .legal-content p,
-            .legal-content ul {
-                font-size: 0.8rem;
-            }
         }
     </style>
 </head>
+
 <body>
-    <!-- Static texture overlay -->
-    <div class="static-overlay"></div>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="C:\Users\offin\Downloads\culi_-_co__1_-removebg-preview.png" alt="Culi Logo" class="logo-image">
+<div class="static-overlay"></div>
+
+<header>
+    <div class="logo">
+        <img src="/culi-site-images/culi%20-%20co%20(3).png" class="logo-image" alt="Culi Logo">
+    </div>
+    <nav>
+        <a href="experiences.html">experiences</a>
+        <a href="#host-contact">host an event</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <!-- Replace this once uploaded -->
+        <source src="/culi-site-images/hero-video.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+        <h1>Find the best dining events on Earth.</h1>
+        <a href="experiences.html" class="cta-button">Ready to dine?</a>
+    </div>
+</section>
+<!-- Carousel Section -->
+<section class="carousel-section">
+    <h2 class="carousel-title">The fun way to dine.</h2>
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+
+            <!-- 1 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/12.culi_site_img.png" class="carousel-img" alt="Chef's Table">
+                    <div class="carousel-overlay">Chef's Table: A Night on U Street</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Chef's Table: A Night on U Street</div>
+                    <div class="carousel-description">An intimate five-course tasting celebrating DC's creative food scene.</div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/bakerybts.jpg" class="carousel-img" alt="Shaw After Dark">
+                    <div class="carousel-overlay">Behind the Bakery: Shaw After Dark</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Behind the Bakery: Shaw After Dark</div>
+                    <div class="carousel-description">Step into a Shaw bakery after hours for fresh pastries, stories, and late-night bites.</div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/9.culi_site_img.png" class="carousel-img" alt="Hidden at The Wharf">
+                    <div class="carousel-overlay">Secret Menu Night: Hidden at The Wharf</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Secret Menu Night: Hidden at The Wharf</div>
+                    <div class="carousel-description">A one-night-only menu crafted by a rising DC chef — exclusive to Culi guests.</div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/wineparl.jpg" class="carousel-img" alt="Wine Parlor Experience">
+                    <div class="carousel-overlay">The Wharf Wine Parlor Experience</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">The Wharf Wine Parlor Experience</div>
+                    <div class="carousel-description">Sip and savor through five pairings overlooking the waterfront — elegant, effortless, and intimate.</div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/1.culi_site_image.jpg" class="carousel-img" alt="Next Great DC Kitchen">
+                    <div class="carousel-overlay">Opening Preview: The Next Great DC Kitchen</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Opening Preview: The Next Great DC Kitchen</div>
+                    <div class="carousel-description">Be among the first to experience a brand-new restaurant before it opens to the public.</div>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/fun-mixology-class-Houston.jpg" class="carousel-img" alt="Capitol Cocktails">
+                    <div class="carousel-overlay">Mixology Night: Capitol Cocktails</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Mixology Night: Capitol Cocktails</div>
+                    <div class="carousel-description">Craft, shake, and sip with DC's top mixologists — from classic negronis to wild new creations.</div>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/chefcollabo.jpg" class="carousel-img" alt="Two Chefs, One Wharf">
+                    <div class="carousel-overlay">Chef Collaboration: Two Chefs, One Wharf</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Chef Collaboration: Two Chefs, One Wharf</div>
+                    <div class="carousel-description">Two culinary minds. One night. A boundary-pushing tasting at DC's waterfront.</div>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/9.culi_site_img.png" class="carousel-img" alt="Sushi & Sake">
+                    <div class="carousel-overlay">Sushi & Sake Workshop in Georgetown</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Sushi & Sake Workshop in Georgetown</div>
+                    <div class="carousel-description">Roll, pour, and dine your way through a hands-on sushi-making night.</div>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/11.culi_site_img.png" class="carousel-img" alt="Chef Battle">
+                    <div class="carousel-overlay">The Chef Battle: U Street Showdown</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">The Chef Battle: U Street Showdown</div>
+                    <div class="carousel-description">Two chefs, one kitchen, your vote. DC's most exciting live dining competition.</div>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/foodtour.jpeg" class="carousel-img" alt="Culi Food Crawl">
+                    <div class="carousel-overlay">Culi Food Crawl: Hidden Gems of The Wharf</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Culi Food Crawl: Hidden Gems of DC</div>
+                    <div class="carousel-description">A guided tasting through three secret spots — one course at each stop.</div>
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/1.culi_site_image.jpg" class="carousel-img" alt="Dupont After Hours">
+                    <div class="carousel-overlay">Midnight Tasting: Dupont After Hours</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Midnight Tasting: Dupont After Hours</div>
+                    <div class="carousel-description">A candlelit tasting menu and champagne pairing that starts when the city quiets down.</div>
+                </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/8.culi_site_img.png" class="carousel-img" alt="Restaurant Week Remix">
+                    <div class="carousel-overlay">Restaurant Week Remix: Off-Menu DC</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Restaurant Week Remix: Off-Menu DC</div>
+                    <div class="carousel-description">Restaurant Week is great — but these chefs are going off-script for one night only.</div>
+                </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/winery.jpg" class="carousel-img" alt="Winery Edition">
+                    <div class="carousel-overlay">Supper Club Sunday: NoVA Winery Edition</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Supper Club Sunday: NoVA Winery Edition</div>
+                    <div class="carousel-description">A sunset dinner among the vines — live music, local wines, and a seasonal tasting menu.</div>
+                </div>
+            </div>
+
+            <!-- 14 -->
+            <div class="carousel-item">
+                <div class="carousel-image">
+                    <img src="/culi-site-images/privatedinner.jpg" class="carousel-img" alt="Union Market Takeover">
+                    <div class="carousel-overlay">Pop-Up Dinner: Union Market Takeover</div>
+                </div>
+                <div class="carousel-text">
+                    <div class="carousel-title">Pop-Up Dinner: Union Market Takeover</div>
+                    <div class="carousel-description">A hidden pop-up featuring floral cocktails, open fire cooking, and live jazz.</div>
+                </div>
+            </div>
+
         </div>
-        <nav>
-            <a href="experiences.html">experiences</a>
-            <a href="#host-contact">host an event</a>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="C:\Users\offin\Downloads\Untitled video - Made with Clipchamp (5).mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <h1>Find the best dining events on Earth.</h1>
-            <a href="experiences.html" class="cta-button">Ready to dine?</a>
+        <div class="carousel-controls">
+            <button class="carousel-btn" id="prevBtn"><span>←</span> Previous</button>
+            <button class="carousel-btn" id="playPauseBtn"><span>⏸</span> Pause</button>
+            <button class="carousel-btn" id="nextBtn">Next <span>→</span></button>
+        </div>
+
+        <div class="carousel-indicators" id="indicators"></div>
+
+    </div>
+
+    <a href="experiences.html" class="cta-button" style="margin-top: 3rem;">Your next dining event awaits</a>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits-section">
+    <h2 class="benefits-title">Where chefs create, and the world comes to dine.</h2>
+
+    <div class="benefits-vertical">
+
+        <!-- Benefit 1 -->
+        <div class="benefit-item">
+            <div class="benefit-image">
+                <img src="/culi-site-images/bigimg1.webp" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="benefit-content">
+                <h3 class="benefit-title">Extraordinary dining, found.</h3>
+                <p class="benefit-description">Book exclusive dinners, pop-ups, and collaborations happening around the world — all in one place.</p>
+            </div>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="benefit-item">
+            <div class="benefit-image">
+                <img src="/culi-site-images/11.culi_site_img.png" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="benefit-content">
+                <h3 class="benefit-title">Experiences, led by chefs.</h3>
+                <p class="benefit-description">Follow amazing chefs through their cities. Join restaurant crawls, kitchen takeovers, and behind-the-scenes tastings.</p>
+            </div>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="benefit-item">
+            <div class="benefit-image">
+                <img src="/culi-site-images/view-chef-working-kitchen.jpg" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="benefit-content">
+                <h3 class="benefit-title">For those who create.</h3>
+                <p class="benefit-description">Chefs and restaurants provide experiences — from one-night menus to recurring workshops — and connect with an audience that cares.</p>
+            </div>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="benefit-item">
+            <div class="benefit-image">
+                <img src="/culi-site-images/dccapimg.jpeg" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="benefit-content">
+                <h3 class="benefit-title">Starting with Washington and spreading across the world.</h3>
+                <p class="benefit-description">We're starting with the capital but don't worry, we're on our way to your city too.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Host an Experience Contact Section -->
+<section class="host-contact-section" id="host-contact">
+    <div class="host-contact-container">
+        <h2 class="host-contact-title">Host an Experience</h2>
+        <div class="host-contact-content">
+            <p class="host-contact-description">
+                Ready to share your culinary vision with the world? We'd love to hear from you.
+            </p>
+
+            <div class="email-contact-block">
+                <h3 class="email-title">Get in Touch</h3>
+
+                <p class="email-instructions">
+                    Send us an email with your name, information about the kind of event you want to host, 
+                    and our partnerships team will be in touch.
+                </p>
+
+                <div class="email-highlight">
+                    <p class="email-note">
+                        <strong>Even if it's out of the ordinary, let us know!</strong> 
+                        We just want to share the best experiences with the world.
+                    </p>
+                </div>
+
+                <div class="email-contact-info">
+                    <a href="mailto:partnerships@culi.com" class="email-link">
+                        partnerships@culi.com
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-   
-    <!-- Carousel Section -->
-    <section class="carousel-section">
-        <h2 class="carousel-title">The fun way to dine.</h2>
-        <div class="carousel-container">
-            <div class="carousel" id="carousel">
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\OneDrive\Pictures\Screenshots\12.culi_site_img.png" alt="Chef's Table: A Night on U Street" class="carousel-img">
-                        <div class="carousel-overlay">Chef's Table: A Night on U Street</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Chef's Table: A Night on U Street</div>
-                        <div class="carousel-description">An intimate five-course tasting celebrating DC's creative food scene.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\bakerybts.jpg" alt="Behind the Bakery: Shaw After Dark" class="carousel-img">
-                        <div class="carousel-overlay">Behind the Bakery: Shaw After Dark</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Behind the Bakery: Shaw After Dark</div>
-                        <div class="carousel-description">Step into a Shaw bakery after hours for fresh pastries, stories, and late-night bites.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\OneDrive\Pictures\Screenshots\9.culi_site_img.png" alt="Secret Menu Night: Hidden at The Wharf" class="carousel-img">
-                        <div class="carousel-overlay">Secret Menu Night: Hidden at The Wharf</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Secret Menu Night: Hidden at The Wharf</div>
-                        <div class="carousel-description">A one-night-only menu crafted by a rising DC chef — exclusive to Culi guests.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\wineparl.jpg" alt="The Wharf Wine Parlor Experience" class="carousel-img">
-                        <div class="carousel-overlay">The Wharf Wine Parlor Experience</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">The Wharf Wine Parlor Experience</div>
-                        <div class="carousel-description">Sip and savor through five pairings overlooking the waterfront — elegant, effortless, and intimate.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\1.culi_site_image.jpg" alt="Opening Preview: The Next Great DC Kitchen" class="carousel-img">
-                        <div class="carousel-overlay">Opening Preview: The Next Great DC Kitchen</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Opening Preview: The Next Great DC Kitchen</div>
-                        <div class="carousel-description">Be among the first to experience a brand-new restaurant before it opens to the public.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\fun-mixology-class-Houston.jpg" alt="Mixology Night: Capitol Cocktails" class="carousel-img">
-                        <div class="carousel-overlay">Mixology Night: Capitol Cocktails</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Mixology Night: Capitol Cocktails</div>
-                        <div class="carousel-description">Craft, shake, and sip with DC's top mixologists — from classic negronis to wild new creations.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\chefcollabo.jpg" alt="Chef Collaboration: Two Chefs, One Wharf" class="carousel-img">
-                        <div class="carousel-overlay">Chef Collaboration: Two Chefs, One Wharf</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Chef Collaboration: Two Chefs, One Wharf</div>
-                        <div class="carousel-description">Two culinary minds. One night. A boundary-pushing tasting at DC's waterfront.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\OneDrive\Pictures\Screenshots\9.culi_site_img.png" alt="Sushi & Sake Workshop in Georgetown" class="carousel-img">
-                        <div class="carousel-overlay">Sushi & Sake Workshop in Georgetown</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Sushi & Sake Workshop in Georgetown</div>
-                        <div class="carousel-description">Roll, pour, and dine your way through a hands-on sushi-making night.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\OneDrive\Pictures\Screenshots\11.culi_site_img.png" alt="The Chef Battle: U Street Showdown" class="carousel-img">
-                        <div class="carousel-overlay">The Chef Battle: U Street Showdown</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">The Chef Battle: U Street Showdown</div>
-                        <div class="carousel-description">Two chefs, one kitchen, your vote. DC's most exciting live dining competition.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\foodtour.jpeg" alt="Culi Food Crawl: Hidden Gems of DC" class="carousel-img">
-                        <div class="carousel-overlay">Culi Food Crawl: Hidden Gems of The Wharf</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Culi Food Crawl: Hidden Gems of DC</div>
-                        <div class="carousel-description">A guided tasting through three secret spots — one course at each stop.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\1.culi_site_image.jpg" alt="Midnight Tasting: Dupont After Hours" class="carousel-img">
-                        <div class="carousel-overlay">Midnight Tasting: Dupont After Hours</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Midnight Tasting: Dupont After Hours</div>
-                        <div class="carousel-description">A candlelit tasting menu and champagne pairing that starts when the city quiets down.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\OneDrive\Pictures\Screenshots\8.culi_site_img.png" alt="Restaurant Week Remix: Off-Menu DC" class="carousel-img">
-                        <div class="carousel-overlay">Restaurant Week Remix: Off-Menu DC</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Restaurant Week Remix: Off-Menu DC</div>
-                        <div class="carousel-description">Restaurant Week is great — but these chefs are going off-script for one night only.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\winery.jpg" alt="Supper Club Sunday: NoVA Winery Edition" class="carousel-img">
-                        <div class="carousel-overlay">Supper Club Sunday: NoVA Winery Edition</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Supper Club Sunday: NoVA Winery Edition</div>
-                        <div class="carousel-description">A sunset dinner among the vines — live music, local wines, and a seasonal tasting menu.</div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="C:\Users\offin\Downloads\privatedinner.jpg" alt="Pop-Up Dinner: Union Market Takeover" class="carousel-img">
-                        <div class="carousel-overlay">Pop-Up Dinner: Union Market Takeover</div>
-                    </div>
-                    <div class="carousel-text">
-                        <div class="carousel-title">Pop-Up Dinner: Union Market Takeover</div>
-                        <div class="carousel-description">A hidden pop-up featuring floral cocktails, open fire cooking, and live jazz.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-controls">
-                <button class="carousel-btn" id="prevBtn">
-                    <span>←</span> Previous
-                </button>
-                <button class="carousel-btn" id="playPauseBtn">
-                    <span>⏸</span> Pause
-                </button>
-                <button class="carousel-btn" id="nextBtn">
-                    Next <span>→</span>
-                </button>
-            </div>
-            
-            <div class="carousel-indicators" id="indicators">
-                <!-- Indicators will be generated by JavaScript -->
-            </div>
-                            </div>
+<!-- Final CTA -->
+<section class="final-cta">
+    <a href="experiences.html" class="cta-button">Dine like never before</a>
+    <p class="final-tagline">The best way to dine.</p>
+</section>
 
-        <a href="experiences.html" class="cta-button" style="margin-top: 3rem;">Your next dining event awaits</a>
-    </section>
+<!-- Social Media Footer -->
+<footer class="social-footer">
+    <div class="social-icons">
+        <a href="https://www.instagram.com/yourhandle" class="social-icon" target="_blank">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+            </svg>
+        </a>
 
+        <a href="https://www.tiktok.com/@yourhandle" class="social-icon" target="_blank">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.89 2.89 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+            </svg>
+        </a>
 
-    <!-- Value Summary -->
-   
-    <!-- Narrative: What Culi Does -->
-    <section class="benefits-section">
-        <h2 class="benefits-title">Where chefs create, and the world comes to dine.</h2>
+        <a href="https://twitter.com/yourhandle" class="social-icon" target="_blank">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985a14.2 14.2 0 00-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+        </a>
 
-        <div class="benefits-vertical">
+        <a href="https://www.facebook.com/yourpage" class="social-icon" target="_blank">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+        </a>
+    </div>
+</footer>
 
-            <div class="benefit-item">
-                <div class="benefit-image">
-                    <img src="C:\Users\offin\Downloads\bigimg1.webp" alt="Extraordinary dining, found" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="benefit-content">
-                    <h3 class="benefit-title">Extraordinary dining, found.</h3>
-                    <p class="benefit-description">Book exclusive dinners, pop-ups, and collaborations happening around the world — all in one place.</p>
-                </div>
-            </div>
+<!-- Legal Footer -->
+<footer class="legal-footer">
+    <div class="legal-links">
+        <a href="#" class="legal-link" data-target="terms">Terms & Conditions</a>
+        <a href="#" class="legal-link" data-target="privacy">Privacy Policy</a>
+        <a href="#" class="legal-link" data-target="about">About</a>
+        <a href="#" class="legal-link" data-target="careers">Careers</a>
+    </div>
 
-            <div class="benefit-item">
-                <div class="benefit-image">
-                    <img src="C:\Users\offin\OneDrive\Pictures\Screenshots\11.culi_site_img.png" alt="Experiences, led by chefs" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="benefit-content">
-                    <h3 class="benefit-title">Experiences, led by chefs.</h3>
-                    <p class="benefit-description">Follow amazing chefs through their cities. Join restaurant crawls, kitchen takeovers, and behind-the-scenes tastings.</p>
-                </div>
-            </div>
+    <div id="terms" class="legal-content">
+        <h4>Terms & Conditions</h4>
+        <p>By using Culi's services, you agree to the following terms:</p>
+        <ul>
+            <li>All experience bookings are subject to availability and confirmation.</li>
+            <li>Payment is required at the time of booking.</li>
+            <li>Cancellations must be made at least 48 hours in advance for a full refund.</li>
+            <li>No-shows will not be eligible for refunds.</li>
+            <li>We reserve the right to modify or cancel experiences due to unforeseen circumstances.</li>
+            <li>Participants must be 21+ for alcohol-inclusive experiences.</li>
+            <li>We are not responsible for allergies unless notified in advance.</li>
+        </ul>
+    </div>
 
-            <div class="benefit-item">
-                <div class="benefit-image">
-                    <img src="C:\Users\offin\Downloads\view-chef-working-kitchen.jpg" alt="For those who create" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="benefit-content">
-                    <h3 class="benefit-title">For those who create.</h3>
-                    <p class="benefit-description">Chefs and restaurants provide experiences — from one-night menus to recurring workshops — and connect with an audience that cares.</p>
-                </div>
-            </div>
+    <div id="privacy" class="legal-content">
+        <h4>Privacy Policy</h4>
+        <p>We respect your privacy and protect your personal information.</p>
+        <ul>
+            <li>We collect the info you provide (name, email, payment details).</li>
+            <li>We never sell your data.</li>
+            <li>Security measures are in place to protect your info.</li>
+            <li>You may opt out anytime.</li>
+        </ul>
+    </div>
 
-            <div class="benefit-item">
-                <div class="benefit-image">
-                    <img src="C:\Users\offin\Downloads\dccapimg.jpeg" alt="Starting with Washington and spreading across the world" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="benefit-content">
-                    <h3 class="benefit-title">Starting with Washington and spreading across the world.</h3>
-                    <p class="benefit-description">We're starting with the capital but don't worry, we're on our way to your city too.</p>
-                </div>
-            </div>
+    <div id="about" class="legal-content">
+        <h4>About Culi</h4>
+        <p>Culi connects food enthusiasts with extraordinary culinary experiences worldwide.</p>
+    </div>
 
-        </div>
-    </section>
+    <div id="careers" class="legal-content">
+        <h4>Careers</h4>
+        <p>Join the Culi team and help shape the future of dining.</p>
+    </div>
 
-    <!-- Host an Experience Contact Section -->
-    <section class="host-contact-section" id="host-contact">
-        <div class="host-contact-container">
-            <h2 class="host-contact-title">Host an Experience</h2>
-            <div class="host-contact-content">
-                <p class="host-contact-description">
-                    Ready to share your culinary vision with the world? We'd love to hear from you.
-                </p>
-                <div class="email-contact-block">
-                    <h3 class="email-title">Get in Touch</h3>
-                    <p class="email-instructions">
-                        Send us an email with your name, information about the kind of event you want to host, 
-                        and our partnerships team will be in touch.
-                    </p>
-                    <div class="email-highlight">
-                        <p class="email-note">
-                            <strong>Even if it's out of the ordinary, let us know!</strong> 
-                            We just want to share the best experiences with the world.
-                        </p>
-                    </div>
-                    <div class="email-contact-info">
-                        <a href="mailto:partnerships@culi.com" class="email-link">
-                            partnerships@culi.com
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="copyright">
+        © 2024 Culi. All rights reserved.
+    </div>
+</footer>
 
-    <!-- Final CTA -->
-    <section class="final-cta">
-        <a href="experiences.html" class="cta-button">Dine like never before</a>
-        <p class="final-tagline">The best way to dine.</p>
-    </section>
+<!-- Legal Footer Script -->
+<script>
+document.querySelectorAll('.legal-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        document.querySelectorAll('.legal-content').forEach(c => {
+            if (c !== targetEl) c.classList.remove('active');
         });
 
+        targetEl.classList.toggle('active');
 
-        // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Enhanced Carousel functionality
-        const carousel = document.querySelector('#carousel');
-        const prevBtn = document.querySelector('#prevBtn');
-        const nextBtn = document.querySelector('#nextBtn');
-        const playPauseBtn = document.querySelector('#playPauseBtn');
-        const indicatorsContainer = document.querySelector('#indicators');
-        
-        if (carousel) {
-            let currentIndex = 0;
-            let isPlaying = true;
-            let autoPlayInterval;
-            const totalItems = carousel.children.length;
-            const itemsPerView = Math.floor(carousel.clientWidth / 370); // 350px + 20px gap
-            
-            // Create indicators
-            function createIndicators() {
-                indicatorsContainer.innerHTML = '';
-                for (let i = 0; i < totalItems; i++) {
-                    const indicator = document.createElement('div');
-                    indicator.className = 'indicator';
-                    if (i === 0) indicator.classList.add('active');
-                    indicator.addEventListener('click', () => goToSlide(i));
-                    indicatorsContainer.appendChild(indicator);
-                }
-            }
-            
-            // Update indicators
-            function updateIndicators() {
-                const indicators = indicatorsContainer.querySelectorAll('.indicator');
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentIndex);
-                });
-            }
-            
-            // Go to specific slide
-            function goToSlide(index) {
-                currentIndex = index;
-                const translateX = -currentIndex * 370; // 350px + 20px gap
-                carousel.style.transform = `translateX(${translateX}px)`;
-                updateIndicators();
-                updateButtons();
-            }
-            
-            // Next slide with continuous loop
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalItems;
-                goToSlide(currentIndex);
-                
-                // Force continuous play - restart if somehow stopped
-                if (isPlaying) {
-                    if (autoPlayInterval) {
-                        clearInterval(autoPlayInterval);
-                    }
-                    startAutoPlay();
-                }
-            }
-            
-            // Previous slide
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                goToSlide(currentIndex);
-            }
-            
-            // Toggle play/pause
-            function togglePlayPause() {
-                isPlaying = !isPlaying;
-                if (isPlaying) {
-                    startAutoPlay();
-                    playPauseBtn.innerHTML = '<span>⏸</span> Pause';
-                } else {
-                    stopAutoPlay();
-                    playPauseBtn.innerHTML = '<span>▶</span> Play';
-                }
-            }
-            
-            // Start auto-play
-            function startAutoPlay() {
-                if (autoPlayInterval) {
-                    clearInterval(autoPlayInterval);
-                }
-                autoPlayInterval = setInterval(nextSlide, 1200); // Much faster: 1.2 seconds
-            }
-            
-            // Stop auto-play
-            function stopAutoPlay() {
-                clearInterval(autoPlayInterval);
-            }
-            
-            // Update button states
-            function updateButtons() {
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex === totalItems - itemsPerView;
-            }
-            
-            // Event listeners
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-            playPauseBtn.addEventListener('click', togglePlayPause);
-            
-            // Initialize
-            createIndicators();
-            updateButtons();
-            startAutoPlay();
-            
-            // Failsafe: ensure carousel keeps running
-            setInterval(() => {
-                if (isPlaying && !autoPlayInterval) {
-                    startAutoPlay();
-                }
-            }, 1000);
-            
-            // Only pause on hover if user hasn't manually paused
-            carousel.addEventListener('mouseenter', () => {
-                if (isPlaying) {
-                    stopAutoPlay();
-                }
-            });
-            
-            carousel.addEventListener('mouseleave', () => {
-                if (isPlaying) {
-                    startAutoPlay();
-                }
-            });
-            
-            // Touch/swipe support
-            let startX = 0;
-            let endX = 0;
-            
-            carousel.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
-            
-            carousel.addEventListener('touchend', (e) => {
-                endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
-                
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        nextSlide();
-                    } else {
-                        prevSlide();
-                    }
-                }
-            });
+        if (targetEl.classList.contains('active')) {
+            setTimeout(() => {
+                targetEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }, 150);
         }
-    </script>
-
-    <!-- Social Media Footer -->
-    <footer class="social-footer">
-        <div class="social-icons">
-            <a href="https://www.instagram.com/yourhandle" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-            </a>
-            <a href="https://www.tiktok.com/@yourhandle" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.89 2.89 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                </svg>
-            </a>
-            <a href="https://twitter.com/yourhandle" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                </svg>
-            </a>
-            <a href="https://www.facebook.com/yourpage" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-            </a>
-        </div>
-    </footer>
-
-    <!-- Legal Footer -->
-    <footer class="legal-footer">
-        <div class="legal-links">
-            <a href="#" class="legal-link" data-target="terms">Terms & Conditions</a>
-            <a href="#" class="legal-link" data-target="privacy">Privacy Policy</a>
-            <a href="#" class="legal-link" data-target="about">About</a>
-            <a href="#" class="legal-link" data-target="careers">Careers</a>
-        </div>
-
-        <div id="terms" class="legal-content">
-            <h4>Terms & Conditions</h4>
-            <p>By using Culi's services, you agree to the following terms:</p>
-            <ul>
-                <li>All experience bookings are subject to availability and confirmation.</li>
-                <li>Payment is required at the time of booking.</li>
-                <li>Cancellations must be made at least 48 hours in advance for a full refund.</li>
-                <li>No-shows will not be eligible for refunds.</li>
-                <li>We reserve the right to modify or cancel experiences due to unforeseen circumstances.</li>
-                <li>Participants must be 21+ for alcohol-inclusive experiences where applicable.</li>
-                <li>We are not responsible for any dietary restrictions or allergies unless notified in advance.</li>
-            </ul>
-            <p>For questions about these terms, please contact us at <a href="mailto:info@culi.com">info@culi.com</a>.</p>
-        </div>
-
-        <div id="privacy" class="legal-content">
-            <h4>Privacy Policy</h4>
-            <p>At Culi, we respect your privacy and are committed to protecting your personal information.</p>
-            <ul>
-                <li>We collect information you provide when booking experiences, including name, email, and payment details.</li>
-                <li>Your information is used to process bookings, send confirmations, and improve our services.</li>
-                <li>We do not sell or share your personal information with third parties except as necessary to provide our services.</li>
-                <li>We use industry-standard security measures to protect your data.</li>
-                <li>You may opt out of marketing communications at any time.</li>
-                <li>Cookies may be used to enhance your browsing experience.</li>
-            </ul>
-            <p>For privacy inquiries, contact us at <a href="mailto:privacy@culi.com">privacy@culi.com</a>.</p>
-        </div>
-
-        <div id="about" class="legal-content">
-            <h4>About Culi</h4>
-            <p>Culi is a platform connecting food enthusiasts with extraordinary culinary experiences. We curate exclusive dining events, chef collaborations, and culinary workshops that celebrate the art of food and dining.</p>
-            <p>Founded in Washington DC, we're dedicated to showcasing the best culinary talent and creating memorable experiences that go beyond traditional dining.</p>
-            <p>Our mission is to make exceptional dining experiences accessible to everyone, whether you're a local foodie or visiting from out of town.</p>
-            <p>For general inquiries, contact us at <a href="mailto:info@culi.com">info@culi.com</a>.</p>
-        </div>
-
-        <div id="careers" class="legal-content">
-            <h4>Careers</h4>
-            <p>Join the Culi team and help shape the future of culinary experiences.</p>
-            <p>We're always looking for passionate individuals who share our love for food, hospitality, and creating unforgettable experiences.</p>
-            <p><strong>Interested in joining us? Please email your resume and cover letter to <a href="mailto:careers@culi.com">careers@culi.com</a>.</strong></p>
-            <p>We're particularly interested in candidates with experience in:</p>
-            <ul>
-                <li>Event planning and coordination</li>
-                <li>Hospitality and restaurant operations</li>
-                <li>Marketing and brand development</li>
-                <li>Customer service</li>
-                <li>Technology and platform development</li>
-            </ul>
-            <p>We review applications on a rolling basis and will contact qualified candidates directly.</p>
-        </div>
-
-        <div class="copyright">
-            © 2024 Culi. All rights reserved.
-        </div>
-    </footer>
-
-    <script>
-        // Legal Footer Expand/Collapse
-        document.querySelectorAll('.legal-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('data-target');
-                const targetContent = document.getElementById(targetId);
-                const allContent = document.querySelectorAll('.legal-content');
-                
-                // Close all other sections
-                allContent.forEach(content => {
-                    if (content !== targetContent) {
-                        content.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current section
-                targetContent.classList.toggle('active');
-                
-                // Scroll to content if opening
-                if (targetContent.classList.contains('active')) {
-                    setTimeout(() => {
-                        targetContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 100);
-                }
-            });
-        });
-    </script>
-</body>
-</html> 
+    });
+});
+</script>

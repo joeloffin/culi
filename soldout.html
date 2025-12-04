@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sold Out - Culi</title>
+    <link rel="icon" type="image/x-icon" href="Untitled design (2).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #FFD700;
+            --gold-dark: #DAA520;
+            --emerald: #046A38;
+            --emerald-light: #0B8A4A;
+            --emerald-dark: #0B3D2E;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
+            --transparent-white: rgba(255, 255, 255, 0.1);
+            --transparent-gold: rgba(255, 215, 0, 0.1);
+            --transparent-emerald: rgba(4, 106, 56, 0.1);
+            
+            /* Font variables */
+            --serif-font: 'Playfair Display', serif;
+            --sans-font: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--sans-font);
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Static texture overlay */
+        .static-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(4, 106, 56, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-image {
+            transform: scale(1.05);
+        }
+
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            margin-left: 3rem;
+        }
+
+        nav a:hover {
+            color: var(--gold-dark);
+        }
+
+        /* Sold Out Content */
+        .soldout-container {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+
+        .soldout-title {
+            font-family: var(--serif-font);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .soldout-subtitle {
+            font-family: var(--serif-font);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--white);
+            opacity: 0.8;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .notification-box {
+            background: var(--dark-gray);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 100%;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.15), 0 0 40px rgba(255, 215, 0, 0.05);
+            position: relative;
+        }
+
+        .notification-box::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(4, 106, 56, 0.2));
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.6;
+        }
+
+        .notification-box h3 {
+            font-family: var(--serif-font);
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .notification-box p {
+            font-family: var(--serif-font);
+            font-size: 1rem;
+            color: var(--white);
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .email-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .email-input-group label {
+            font-family: var(--serif-font);
+            font-size: 0.9rem;
+            color: var(--emerald);
+            font-weight: 500;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--black);
+            border: 2px solid rgba(4, 106, 56, 0.3);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: var(--sans-font);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .email-submit-btn {
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            border-radius: 10px;
+            font-family: var(--serif-font);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .email-submit-btn:hover {
+            background: var(--emerald-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(4, 106, 56, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(4, 106, 56, 0.2);
+            border: 1px solid var(--emerald);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            font-family: var(--serif-font);
+            color: var(--emerald);
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Social Media Footer */
+        .social-footer {
+            position: relative;
+            z-index: 2;
+            padding: 3rem 4rem;
+            background: var(--black);
+            border-top: 1px solid rgba(4, 106, 56, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-gray);
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 2rem;
+            }
+
+            nav a {
+                margin-left: 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .soldout-title {
+                font-size: 2.5rem;
+            }
+
+            .soldout-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .notification-box {
+                padding: 2rem;
+            }
+
+            .social-footer {
+                padding: 2rem 2rem;
+            }
+
+            .social-icons {
+                gap: 1.5rem;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.75rem;
+            }
+
+            .soldout-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .soldout-title {
+                font-size: 2rem;
+            }
+
+            .soldout-subtitle {
+                font-size: 1rem;
+            }
+
+            .notification-box {
+                padding: 1.5rem;
+            }
+
+            .social-footer {
+                padding: 1.5rem;
+            }
+
+            .social-icons {
+                gap: 1rem;
+            }
+
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Static texture overlay -->
+    <div class="static-overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="C:\Users\offin\Downloads\culi_-_co__1_-removebg-preview.png" alt="Culi Logo" class="logo-image">
+        </div>
+        <nav>
+            <a href="experiences.html">experiences</a>
+            <a href="index.html">home</a>
+            <a href="index.html#host-contact">host an event</a>
+        </nav>
+    </header>
+
+    <!-- Sold Out Content -->
+    <div class="soldout-container">
+        <h1 class="soldout-title">This Event Has Been Sold Out</h1>
+        <p class="soldout-subtitle">We're sorry, but all tickets for this experience have been claimed.</p>
+
+        <div class="notification-box">
+            <h3>Stay in the Loop</h3>
+            <p>Drop your email below and we'll notify you of the next Culi event</p>
+            
+            <form class="email-form" id="emailNotifyForm">
+                <div class="email-input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="email-input" placeholder="your.email@example.com" required>
+                </div>
+                <button type="submit" class="email-submit-btn">Get Notified</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                Thanks! We'll be in touch when the next event launches.
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media Footer -->
+    <footer class="social-footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/yourhandle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://www.tiktok.com/@yourhandle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.89 2.89 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+            </a>
+            <a href="https://twitter.com/yourhandle" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/yourpage" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Email notification form
+        document.getElementById('emailNotifyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const successMessage = document.getElementById('successMessage');
+            const submitBtn = this.querySelector('.email-submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.style.opacity = '0.7';
+            
+            // Submit to Google Forms
+            // Form URL: https://docs.google.com/forms/d/e/1FAIpQLSdWOL_R07KtDelahQxhUcNPwJpyk5Yp-L-HTHjhxvoLBb8aMA/viewform
+            const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdWOL_R07KtDelahQxhUcNPwJpyk5Yp-L-HTHjhxvoLBb8aMA/formResponse';
+            const entryId = 'entry.410389769'; // Email field entry ID from Google Form
+            const formData = new URLSearchParams();
+            formData.append(entryId, email);
+            
+            // Submit to Google Forms
+            fetch(googleFormUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                // Show success message
+                successMessage.classList.add('show');
+                this.reset();
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Optional: Log to console for debugging
+                console.log('Email submitted:', email);
+            }).catch((error) => {
+                // Even with no-cors, we'll show success (Google Forms will still receive it)
+                successMessage.classList.add('show');
+                this.reset();
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                
+                console.log('Form submitted (may appear as error due to no-cors, but Google Forms will receive it)');
+            });
+            
+            /* 
+            Alternative Option 2: Send to your backend API
+            Uncomment and customize this if you have a backend:
+            
+            fetch('YOUR_API_ENDPOINT', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                successMessage.classList.add('show');
+                this.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your email. Please try again.');
+            });
+            */
+        });
+    </script>
+</body>
+</html>
+
